@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color Picker</title>
+  <style>
+    .color-picker {
+      display: inline-block;
+    }
+
+    .color-picker button {
+      padding: 5px;
+      width: 80px;
+      height: 50px;
+      background-color: #555;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .color-picker .color-list {
+      display: none;
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+
+    .color-picker .color-item {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="color-picker">
+    <button id="colorPickerBtn">Pick a color</button>
+    <ul id="colorList" class="color-list"></ul>
+  </div>
+
+  <script>
+    const colors = ['red', 'green', 'blue', 'yellow', 'orange', 'purple'];
+
+    const colorPickerBtn = document.getElementById('colorPickerBtn');
+    const colorList = document.getElementById('colorList');
+
+    colorPickerBtn.addEventListener('click', function() {
+      colorList.style.display = 'block';
+    });
+
+    colors.forEach(function(color) {
+      const colorItem = document.createElement('li');
+      colorItem.classList.add('color-item');
+      colorItem.style.backgroundColor = color;
+
+      colorItem.addEventListener('click', function() {
+        colorPickerBtn.style.backgroundColor = color;
+        colorList.style.display = 'none';
+      });
+
+      colorList.appendChild(colorItem);
+    });
+  </script>
+</body>
+</html>
